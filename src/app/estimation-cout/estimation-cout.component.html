@@ -1,0 +1,25 @@
+<p>estimation-cout works!</p>
+<form #form="ngForm" (ngSubmit)="submitForm(form)">
+    <label for="position">Position</label>
+    <select id="position" name="position" required [(ngModel)]="selectedPos" #position="ngModel">
+        <option value="" disabled selected>Select a position</option>
+        <option value="vide">vide</option>
+        <option value="haut">haut</option>
+        <option value="bas">bas</option>
+    </select>
+    <small *ngIf="form.controls['position']?.errors?.['required'] && form.controls['position']?.touched">
+        Position is required
+    </small><br>
+
+    <label for="carac">Nombre de caractères</label>
+    <input type="number" id="carac" name="carac" required [(ngModel)]="charCount" #carac="ngModel">
+    <small *ngIf="form.controls['carac']?.errors?.['required'] && form.controls['carac']?.touched">
+        Number of characters is required
+    </small>
+    <small *ngIf="charCount && charCount > 60">
+        Character count should not exceed 60
+    </small><br>
+
+    <button type="submit">Estimer</button>
+</form><br>
+<p *ngIf="cost !== null">Cost: {{ cost }} dt</p>

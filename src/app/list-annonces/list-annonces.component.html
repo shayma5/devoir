@@ -1,0 +1,10 @@
+<h2>Liste des annonces</h2>
+
+<div *ngFor="let announcement of list">
+  <div *ngIf="announcement.etat !== 'annulé'"
+       [ngStyle]="{'background-color': announcement.etat === 'confirmé' ? 'green' : (announcement.etat === 'en attente' ? 'orange' : 'inherit')}">
+    {{ announcement.titre }} <br>
+    {{ announcement.description }} <br>
+    *********************************
+  </div>
+</div>
